@@ -1,0 +1,35 @@
+{
+	"name": "KintsugiTreasury",
+	"short_name": "KintsugTreasury",
+	"description": "A treasury management tool for NFT projects. Powered by Kintsugi Finance.",
+	"iconPath": "./favicons/apple-icon.png",
+	"locale": "en-US",
+	"uri": "https://nftreasury.click/",
+	"og": "https://nftreasury.click/og.png",
+	"twitter": "@KintsugiArbi",
+	"github": "https://github.com/Kintsugi-Finance",
+	"icons": [
+		{
+			"src": "./favicons/android-icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "./favicons/android-icon-144x144.png",
+			"sizes": "144x144",
+			"type": "image/png"
+		},
+		{
+			"src": "./favicons/favicon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"theme_color": "#000000",
+	"background_color": "#000000",
+	"title_color": "#FFFFFF",
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "portrait"
+}

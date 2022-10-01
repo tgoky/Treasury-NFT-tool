@@ -1,0 +1,186 @@
+/* This will load Tailwindcss + all the overwrite from Yearn lib */
+@import '@yearn-finance/web-lib/dist/style.css';
+
+:root {
+	--default-rounded: 0rem;
+	margin-left: calc(100vw - 100%);
+}
+
+* {
+	@apply font-mono;
+}
+
+
+/* 🔵 - Yearn Finance ******************************************************
+** Styling the web-lib components in order to fit the theme for this
+** specific project.
+**************************************************************************/
+.component--switchCard-wrapper {
+	@apply flex flex-row justify-between p-2 space-x-2 w-full cursor-pointer md:p-0 md:space-x-6 md:w-max
+}
+.image-align-middle > img {
+	object-position: 0 70%;
+}
+:root body[data-theme="dark"],
+:root body[data-theme="light"] {
+	--color-neutral-0: 0 0% 100%;	/* white */
+	--color-neutral-100: 0 0% 100%;	/* white */
+	--color-neutral-200: 0 0% 96%;	/* grey-1 */
+	--color-neutral-300: 0 0% 87%;	/* grey-2 */
+	--color-neutral-400: 0 0% 53%;  /* grey-3 */
+	--color-neutral-500: 0 0% 53%;  /* grey-3 */
+	--color-neutral-700: 0 0% 0%;   /* black */
+	--color-neutral-800: 0 0% 17%;  /* black-1 */
+	--color-neutral-900: 0 0% 0%;   /* black */
+
+	--color-primary-100: 0 0% 0%;   /* black */
+	--color-primary-200: 0 0% 0%;   /* black */
+	--color-primary-500: 0 0% 0%;   /* black */
+	--color-primary-600: 0 0% 0%;   /* black */
+	--color-accent-500: 0 0% 0%;    /* black */
+	--color-accent-600: 0 0% 0%;    /* black */
+	@apply bg-neutral-200;
+}
+
+.yearn--button {
+	@apply rounded-none h-10 relative transition-all border-primary-500 flex justify-start w-auto md:min-w-[176px] text-sm md:text-base;
+
+	&[data-variant="outlined"] {
+		@apply bg-neutral-0 border-2;
+		&:not(:disabled):not([aria-busy="true"]):hover {@apply bg-neutral-100;}
+	}
+	&[data-variant="filled"] {
+		@apply border-2;
+		&:disabled {@apply bg-neutral-800 border-neutral-800;}
+	}
+}
+
+.yearn--card {
+	@apply border-2 border-primary-500 !shadow-none rounded-none !px-8;
+}
+.yearn--input-max {
+	--input-max-text-color: hsl(var(--color-typo-secondary));
+	--input-max-border-color: hsl(var(--color-typo-secondary));
+	--input-max-bg-color-hover: hsl(var(--color-typo-primary)/0.1);
+}
+
+.yearn--modal {
+	@apply sm:max-w-2xl border-2 border-primary-500;
+}
+.yearn--modalLogin-card {
+	@apply hover:bg-neutral-200 text-xs md:text-sm;
+}
+
+.yearn--modalLogin-card b {
+	@apply text-sm md:text-lg;
+}
+
+.yearn--modalLogin-card {
+	& * {@apply !font-mono;}
+}
+
+/* 🔵 - Yearn Finance ******************************************************
+** Adding some custom scss classes
+**************************************************************************/
+
+h1 {
+	@apply text-4xl md:text-6xl;
+}
+
+h2 {
+	@apply text-2xl md:text-4xl font-bold;
+}
+
+h3 {
+	@apply text-base md:text-xl;
+}
+
+.nftreasury--withShadow {
+	@apply relative mt-2 w-full md:w-fit h-fit bg-repeat -mr-2;
+	& > * {@apply -top-2 -left-2 transition-all relative;}
+	background-image: url('/shadowPattern.svg');
+
+	&[role="button"] {@apply cursor-pointer -left-2 ml-4;}
+	&[role="button-disabled"] {@apply cursor-not-allowed -left-2 ml-4 bg-none;}
+	&[role="button-busy"] {@apply cursor-wait -left-2 ml-4 bg-none;}
+	
+	&[role="button-busy"] > * {@apply top-0 -left-0;}
+
+	&[role="button"] > *:hover {@apply -top-1 -left-1;}
+	&[role="button"] > *:active {@apply top-0 -left-0;}
+	&[role="large"] {
+		width: calc(100% - 0.5rem);
+		@apply ml-2 md:ml-0 md:w-fit;
+		& > * {
+			@apply -top-2 md:-top-4 -left-2 md:-left-4 align-middle; 
+		}
+	}
+}
+.nftreasury--withShadow-wrapper {
+	@apply pt-[1px] -mt-2 cursor-pointer mr-2 md:mr-0;
+
+	& .nftreasury--withShadow[role="button-disabled"],
+	& .nftreasury--withShadow[role="button-busy"],
+	& .nftreasury--withShadow[role="button"] {
+		@apply cursor-pointer -left-2 ml-4;
+	}
+
+	&:hover {
+		& > .nftreasury--withShadow[role="button"] > * {
+			@apply -top-1 -left-1;
+		}
+	}
+	&:active {
+		& > .nftreasury--withShadow[role="button"] > * {
+			@apply top-0 left-0;
+		}
+	}
+}
+
+.nftreasury--link-no-dot {
+	@apply relative cursor-pointer transition-colors text-neutral-400 hover:text-primary-100/60;
+	&.active {
+		@apply text-primary-100 hover:text-primary-100;
+	}
+}
+.nftreasury--link-with-dot {
+	@apply relative cursor-pointer transition-colors text-neutral-400 hover:text-primary-100/60;
+	
+	&:hover::before {
+		@apply -bottom-1 bg-primary-100/60;
+	}
+
+	&.active {
+		@apply text-primary-100 hover:text-primary-100;
+		&::before {
+			@apply -bottom-1 bg-primary-100;
+		}
+	}
+
+	&::before {
+		height: 3px;
+		width: 3px;
+		transform: translateX(-50%);
+		content: '';
+		@apply transition-all absolute bg-primary-100/0 -bottom-2 rounded-full left-1/2;
+	}
+}
+
+.nftreasury--grey-box {
+	border: solid 2px #DDDDDD;
+	background-color: #F6F6F6;
+}
+
+.nftreasury--button-percentage {
+	@apply block px-1 w-14 h-10 font-bold whitespace-nowrap border-2 !border-l-0;
+	&[aria-selected="true"] {
+		@apply bg-neutral-300;
+	}
+}
+
+.nftreasury--app-wrapper {
+	@apply flex items-start pl-0 mt-4 w-full h-full md:items-center md:pl-4 md:mt-0 md:w-6/12 md:pl-4;
+}
+.nftreasury--app-card {
+	@apply flex flex-col w-full min-h-[544px] md:w-[544px] md:h-[544px];
+}
